@@ -1,0 +1,14 @@
+
+digraph graphname {
+    DNS [label="DNS", shape=box]
+    LOAD_BALANCER [label="Load Balancer", shape=box]
+    FIRST_PARTITION [label="Partitioiner", shape=box]
+    SLOW_PARTITION [label="Partitioiner", shape=box]
+    FIRST_MSQ [label="Message Queue", shape=box]
+    SLOW_MSQ [label="Message Queue", shape=box]
+
+    DNS->LOAD_BALANCER->FIRST_PARTITION->FIRST_MSQ
+    FIRST_PARTITION->FIRST_MSQ
+    DNS->LOAD_BALANCER->SLOW_PARTITION->SLOW_MSQ
+    SLOW_PARTITION->SLOW_MSQ
+}

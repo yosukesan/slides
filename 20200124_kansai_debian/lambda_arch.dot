@@ -1,0 +1,18 @@
+
+digraph graphname {
+    DNS [label="DNS", shape=box]
+    LOAD_BALANCER [label="Load Balancer", shape=box]
+    FIRST_PARTITION [label="Partitioiner", shape=box]
+    SLOW_PARTITION [label="Partitioiner", shape=box]
+    FIRST_MSQ [label="Message Queue", shape=box]
+    SLOW_MSQ [label="Message Queue", shape=box]
+    NOSQL [label="NoSQL", shape=box]
+    DISTRIBUTED_STORAGE [label="Distributed File Storage", shape=box]
+    BATCH [label="Batch Process", shape=box]
+    APP [label="Application", shape=box]
+
+    DNS->LOAD_BALANCER->FIRST_PARTITION->FIRST_MSQ->APP->NOSQL->BATCH->DISTRIBUTED_STORAGE
+    FIRST_PARTITION->FIRST_MSQ->APP->NOSQL->BATCH->DISTRIBUTED_STORAGE
+    DNS->LOAD_BALANCER->SLOW_PARTITION->SLOW_MSQ->APP->DISTRIBUTED_STORAGE
+    SLOW_PARTITION->SLOW_MSQ->APP->DISTRIBUTED_STORAGE
+}
